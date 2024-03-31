@@ -21,7 +21,7 @@ export class HomeComponent {
   constructor(private PatientData: PatientService) { }
 
   Departments: any = [];
-  filteredDepartments: any;
+  filteredDepartments: any = [];
   ngOnInit(): void {
     console.log(this.selectedStatus);
     this.PatientData.getDepartments().subscribe((data: any[]) => {
@@ -32,16 +32,17 @@ export class HomeComponent {
     this.filteredDepartments = this.Departments.filter((department: any) => { return department.checked; })
   }
   onWardCheckboxChange(): void {
-    this.filteredDepartments = this.Departments.filter((department: any) => {
+    this.filteredDepartments = JSON.parse(JSON.stringify(this.Departments.filter((department: any) => {
       // Check if any ward in the department is checked
       return department.wards.some((ward: any) => { return ward.checked });
-    });
+    })));
 
-    console.log("Departments:", this.Departments);
-    console.log("Filtered Departments:", this.filteredDepartments);
+    this.filteredDepartments.forEach((outerObj: any) => {
+      outerObj.wards = outerObj.wards.filter((innerObj: any) => innerObj.checked);
+
+    });
   }
   selectedDetail() {
-    console.log(this.selectedStatus);
     this.selectedStatus = true;
     this.selectedStatusMedical = false;
     this.selectedArrival = false;

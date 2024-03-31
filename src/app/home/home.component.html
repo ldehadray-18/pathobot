@@ -24,7 +24,8 @@
                                     <div>
                                         <div class="row"
                                             [ngClass]="{'occupied': room.room_status=='occupied', 'unoccupied': room.room_status=='unoccupied', 'infected-orange': room.room_status=='infected-orange', 'infected-red': room.room_status=='infected-red'}"
-                                            placement="right" [ngbPopover]="patientDetailTemplate">
+                                            placement="right" [ngbPopover]="patientDetailTemplate"
+                                            [autoClose]="'outside'">
                                         </div>
                                         <div class="row d-flex justify-content-center">
                                             <div>{{room.room_number}}</div>
@@ -65,39 +66,35 @@
 
 <ng-template #patientDetailTemplate>
 
-    <ul class="nav nav-tabs row " id="myTab" role="tablist">
-        <li class="nav-item col-4" role="presentation">
-            <button class="nav-link" id="patient-tab" data-bs-toggle="tab" data-bs-target="#patient" type="button"
-                role="tab" aria-controls="patient" (click)="selectedDetail()"
-                [ngClass]="{'active':selectedStatus}">Patient
+    <div class="row ">
+        <div class="col-4">
+            <button type="button" class="border-0" (click)="selectedDetail()" [ngClass]="{'active':selectedStatus}">Pt
                 Detail</button>
-        </li>
-        <li class="nav-item col-4" role="presentation">
-            <button class="nav-link" id="medicalStatus-tab" data-bs-toggle="tab" data-bs-target="#medicalStatus"
-                type="button" role="tab" aria-controls="medicalStatus" (click)="selectedMedical()"
-                [ngClass]="{'active':selectedStatusMedical}">Medical Status</button>
-        </li>
-        <li class="nav-item col-4" role="presentation">
-            <button class="nav-link" id="ArrivalDate-tab" data-bs-toggle="tab" data-bs-target="#ArrivalDate"
-                type="button" role="tab" aria-controls="ArrivalDate" (click)="selectedHospitalArrival()"
-                [ngClass]="{'active':selectedArrival}">Hospital Arrival
-                Date</button>
-        </li>
-    </ul>
-    <!-- Tab panes -->
-    <div class="tab-content row">
-        <div class="tab-pane fade show active col-4" id="patient" role="tabpanel"
-            [ngClass]="{'invisible':selectedStatus}" aria-labelledby="patient-tab">
-            <!-- Content for Home tab -->
-            <div>Date Of Birth:20 October 1999 </div>
         </div>
-        <div class="tab-pane fade show active col-4" id="medicalStatus" role="tabpanel"
-            [ngClass]="{'invisible':selectedStatusMedical}" aria-labelledby="medicalStatus-tab">
-            <div>desease high</div>
+        <div class="col-4">
+            <button type="button" class="border-0" (click)="selectedMedical()"
+                [ngClass]="{'active':selectedStatusMedical}">Status</button>
+        </div>
+        <div class="col-4">
+            <button type="button" class="border-0" (click)="selectedHospitalArrival()"
+                [ngClass]="{'active':selectedArrival}">Arrival
+                Date</button>
+        </div>
+    </div>
+
+    <div class="tab-content row">
+        <div class="tab-pane fade show active " id="patient" role="tabpanel" [ngClass]="{'invisible':!selectedStatus}"
+            aria-labelledby="patient-tab">
+
+            <div>Date Of Birth: 20 October 1999 </div>
+        </div>
+        <div class="tab-pane fade show active " id="medicalStatus" role="tabpanel"
+            [ngClass]="{'invisible':!selectedStatusMedical}" aria-labelledby="medicalStatus-tab">
+            <div>Highly Infected</div>
 
         </div>
-        <div class="tab-pane fade show active col-4" id="ArrivalDate" role="tabpanel"
-            [ngClass]="{'invisible':selectedArrival}" aria-labelledby="ArrivalDate-tab">
+        <div class="tab-pane fade show active " id="ArrivalDate" role="tabpanel"
+            [ngClass]="{'invisible':!selectedArrival}" aria-labelledby="ArrivalDate-tab">
             <div>Arrival Date: 24 march 2024 </div>
 
         </div>

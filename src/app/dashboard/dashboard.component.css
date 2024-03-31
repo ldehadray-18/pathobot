@@ -1,48 +1,21 @@
-.navigationList:hover {
-    background-color: white;
-    color: rgb(1, 5, 10);
-
-}
-
 .drawer .drawerList {
     margin-left: 20px;
-    background-color: #1d7ddd;
     color: white;
     border: none;
     border-radius: 20px 0px 0px 20px;
     padding-left: 20px;
-    text-decoration: none;
 
 }
 
 .drawer .drawerList a {
     text-decoration: none;
     color: white;
-    margin-left: 10px;
 }
 
 .drawer .drawerList:hover {
     text-decoration: none;
     background: white;
     color: black;
-}
-
-.drawer .drawerList i {
-    padding-top: 8px;
-}
-
-.drawer .drawerList span {
-    color: white;
-}
-
-.drawer .drawerList i:hover {
-    color: black;
-
-}
-
-.drawer .drawerList span:hover {
-    color: black;
-
 }
 
 .drawer .drawerList a:hover {
