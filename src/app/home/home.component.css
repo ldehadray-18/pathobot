@@ -1,3 +1,10 @@
+.custom-popover-content {
+    max-width: 400px;
+    /* Set the desired maximum width */
+    width: auto !important;
+    /* Override default width */
+}
+
 .occupied {
     background-image: url('../../assets/images/Bed-occupied-icon.png');
     height: 100px;

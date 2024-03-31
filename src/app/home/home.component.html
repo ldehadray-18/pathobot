@@ -1,7 +1,10 @@
 <div class="row">
     <nav class="navbar navbar-light" style="background-color: rgb(183,219,255);">
         <div class="container d-flex justify-content-center">
-            <button class="border" style="background-color: rgb(203,228,253);">Hospital Department / Ward</button>
+            <button class="border" style=" background-color: rgb(203,228,253);" [ngbPopover]="popoverTemplate"
+                popoverTitle="Select Department / Ward" popoverClass="custom-popover-content">Hospital Department /
+                Ward</button>
+
         </div>
     </nav>
 
@@ -16,12 +19,12 @@
                             {{ward.ward_number}}
                         </div>
                         <div class="col-8">
-                            <div class="row">
-                                <div class="col-1" *ngFor="let room of ward.rooms">
+                            <div class="row ">
+                                <div class="col-2 mx-2" *ngFor="let room of ward.rooms">
                                     <div>
                                         <div class="row"
                                             [ngClass]="{'occupied': room.room_status=='occupied', 'unoccupied': room.room_status=='unoccupied', 'infected-orange': room.room_status=='infected-orange', 'infected-red': room.room_status=='infected-red'}"
-                                            placement="right">
+                                            placement="right" [ngbPopover]="patientDetailTemplate">
                                         </div>
                                         <div class="row d-flex justify-content-center">
                                             <div>{{room.room_number}}</div>
@@ -40,41 +43,63 @@
 
 
 <!-- Define your template inside ng-template -->
-<!-- <ng-template #popoverTemplate>
-   
+<ng-template #popoverTemplate>
+
     <div class="row">
         <div class="col" *ngFor="let department of Departments">
             <input type="checkbox" [(ngModel)]="department.checked" (change)="onDeparMentCheckboxChange()" />
-            <label>
+            <label class="mx-2 fw-bold">
                 {{department.department_name}}
             </label>
             <div class="row">
                 <div class="col d-flex" *ngFor="let ward of department.wards">
                     <input type="checkbox" [(ngModel)]="ward.checked" (change)="onWardCheckboxChange()" />
-                    <label>
+                    <label class="mx-2">
                         {{ward.ward_number}}
                     </label>
                 </div>
             </div>
         </div>
     </div>
-</ng-template> -->
+</ng-template>
 
-<!-- <ng-template #patientDetailTemplate>
-  
-    <div class=" container-fluid">
-        <div class="row">
-            <div class="col-4">Patient Detail</div>
-            <div class="col-4">Current Medical Status</div>
-            <div class="col-4">Hospital Arrival Date</div>
+<ng-template #patientDetailTemplate>
+
+    <ul class="nav nav-tabs row " id="myTab" role="tablist">
+        <li class="nav-item col-4" role="presentation">
+            <button class="nav-link" id="patient-tab" data-bs-toggle="tab" data-bs-target="#patient" type="button"
+                role="tab" aria-controls="patient" (click)="selectedDetail()"
+                [ngClass]="{'active':selectedStatus}">Patient
+                Detail</button>
+        </li>
+        <li class="nav-item col-4" role="presentation">
+            <button class="nav-link" id="medicalStatus-tab" data-bs-toggle="tab" data-bs-target="#medicalStatus"
+                type="button" role="tab" aria-controls="medicalStatus" (click)="selectedMedical()"
+                [ngClass]="{'active':selectedStatusMedical}">Medical Status</button>
+        </li>
+        <li class="nav-item col-4" role="presentation">
+            <button class="nav-link" id="ArrivalDate-tab" data-bs-toggle="tab" data-bs-target="#ArrivalDate"
+                type="button" role="tab" aria-controls="ArrivalDate" (click)="selectedHospitalArrival()"
+                [ngClass]="{'active':selectedArrival}">Hospital Arrival
+                Date</button>
+        </li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content row">
+        <div class="tab-pane fade show active col-4" id="patient" role="tabpanel"
+            [ngClass]="{'invisible':selectedStatus}" aria-labelledby="patient-tab">
+            <!-- Content for Home tab -->
+            <div>Date Of Birth:20 October 1999 </div>
         </div>
-        <div class="row d-flex">
-            <div class="col-2">
-                Date Of Birth :
-            </div>
-            <div class="col-2">
-                28th October 1993
-            </div>
+        <div class="tab-pane fade show active col-4" id="medicalStatus" role="tabpanel"
+            [ngClass]="{'invisible':selectedStatusMedical}" aria-labelledby="medicalStatus-tab">
+            <div>desease high</div>
+
+        </div>
+        <div class="tab-pane fade show active col-4" id="ArrivalDate" role="tabpanel"
+            [ngClass]="{'invisible':selectedArrival}" aria-labelledby="ArrivalDate-tab">
+            <div>Arrival Date: 24 march 2024 </div>
+
         </div>
     </div>
-</ng-template> -->
+</ng-template>
