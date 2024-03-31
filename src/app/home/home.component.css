@@ -1,0 +1,43 @@
+.occupied {
+    background-image: url('../../assets/images/Bed-occupied-icon.png');
+    height: 100px;
+    background-repeat: no-repeat;
+}
+
+.unoccupied {
+    background-image: url('../../assets/images/Bed-unoccupied-icon.png');
+    background-repeat: no-repeat;
+    height: 100px;
+}
+
+.infected-red {
+    background-image: url('../../assets/images/Bed-infected-red-icon.png');
+    height: 100px;
+    background-repeat: no-repeat;
+}
+
+.infected-orange {
+    background-image: url('../../assets/images/Bed-infected-orange-icon.png');
+    height: 100px;
+    background-repeat: no-repeat;
+}
+
+.scrollable-div {
+    max-height: 400px;
+    /* Adjust the max height as needed */
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* Enable vertical scrolling */
+    background-color: white;
+    /* Set the background color to white */
+    border: 1px solid #ccc;
+    /* Optional: Add border for visual separation */
+    padding: 10px;
+    /* Optional: Add padding for content */
+}
+
+
+.cardBody {
+    position: relative;
+    top: 200px;
+}

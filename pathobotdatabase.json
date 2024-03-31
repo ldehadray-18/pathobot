@@ -1,0 +1,88 @@
+{
+    "departments": [
+        {
+            "department_name": "Cardiology",
+            "checked": false,
+            "wards": [
+                {
+                    "ward_number": "Ward 1",
+                    "checked": false,
+                    "rooms": [
+                        {
+                            "room_number": "101",
+                            "room_status": "unoccupied"
+                        },
+                        {
+                            "room_number": "102",
+                            "room_status": "occupied"
+                        },
+                        {
+                            "room_number": "103",
+                            "room_status": "infected-red"
+                        },
+                        {
+                            "room_number": "104",
+                            "room_status": "infected-orange"
+                        },
+                        {
+                            "room_number": "105",
+                            "room_status": "infected-red"
+                        }
+                    ]
+                },
+                {
+                    "ward_number": "Ward 2",
+                    "checked": false,
+                    "rooms": [
+                        {
+                            "room_number": "201",
+                            "room_status": "unoccupied"
+                        },
+                        {
+                            "room_number": "202",
+                            "room_status": "occupied"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "department_name": "Neurology",
+            "checked": false,
+            "wards": [
+                {
+                    "ward_number": "Ward 1",
+                    "checked": false,
+                    "rooms": [
+                        {
+                            "room_number": "301",
+                            "room_status": "unoccupied"
+                        },
+                        {
+                            "room_number": "302",
+                            "room_status": "occupied"
+                        }
+                    ]
+                },
+                {
+                    "ward_number": "Ward 2",
+                    "checked": false,
+                    "rooms": [
+                        {
+                            "room_number": "401",
+                            "room_status": "occupied"
+                        },
+                        {
+                            "room_number": "402",
+                            "room_status": "unoccupied"
+                        },
+                        {
+                            "room_number": "403",
+                            "room_status": "infected-red"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

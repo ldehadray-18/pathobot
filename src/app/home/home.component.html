@@ -1,0 +1,80 @@
+<div class="row">
+    <nav class="navbar navbar-light" style="background-color: rgb(183,219,255);">
+        <div class="container d-flex justify-content-center">
+            <button class="border" style="background-color: rgb(203,228,253);">Hospital Department / Ward</button>
+        </div>
+    </nav>
+
+    <div class="container cardBody">
+        Department
+        <div class="card-body">
+            <div class="scrollable-div">
+                <div class="row mx-3" *ngFor="let department of filteredDepartments">
+                    {{department.department_name}}
+                    <div class="row my-2" *ngFor="let ward of department.wards">
+                        <div class="col-3 ">
+                            {{ward.ward_number}}
+                        </div>
+                        <div class="col-8">
+                            <div class="row">
+                                <div class="col-1" *ngFor="let room of ward.rooms">
+                                    <div>
+                                        <div class="row"
+                                            [ngClass]="{'occupied': room.room_status=='occupied', 'unoccupied': room.room_status=='unoccupied', 'infected-orange': room.room_status=='infected-orange', 'infected-red': room.room_status=='infected-red'}"
+                                            placement="right">
+                                        </div>
+                                        <div class="row d-flex justify-content-center">
+                                            <div>{{room.room_number}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Define your template inside ng-template -->
+<!-- <ng-template #popoverTemplate>
+   
+    <div class="row">
+        <div class="col" *ngFor="let department of Departments">
+            <input type="checkbox" [(ngModel)]="department.checked" (change)="onDeparMentCheckboxChange()" />
+            <label>
+                {{department.department_name}}
+            </label>
+            <div class="row">
+                <div class="col d-flex" *ngFor="let ward of department.wards">
+                    <input type="checkbox" [(ngModel)]="ward.checked" (change)="onWardCheckboxChange()" />
+                    <label>
+                        {{ward.ward_number}}
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template> -->
+
+<!-- <ng-template #patientDetailTemplate>
+  
+    <div class=" container-fluid">
+        <div class="row">
+            <div class="col-4">Patient Detail</div>
+            <div class="col-4">Current Medical Status</div>
+            <div class="col-4">Hospital Arrival Date</div>
+        </div>
+        <div class="row d-flex">
+            <div class="col-2">
+                Date Of Birth :
+            </div>
+            <div class="col-2">
+                28th October 1993
+            </div>
+        </div>
+    </div>
+</ng-template> -->
